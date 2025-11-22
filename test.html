@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test</title>
+  <script type="module">
+    console.log('Script loading...');
+    
+    import { Game } from './src/core/Game.js';
+    console.log('Game imported:', Game);
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM loaded');
+      try {
+        const game = new Game();
+        console.log('Game instance created:', game);
+        game.init();
+        console.log('Game initialized');
+      } catch(e) {
+        console.error('Error:', e);
+        document.body.innerHTML = '<h1>Error: ' + e.message + '</h1><pre>' + e.stack + '</pre>';
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>Loading...</h1>
+  <div id="app">
+    <canvas id="game-canvas"></canvas>
+    <div id="ui-overlay"></div>
+    <div id="loading-screen">
+      <h1>🐦 VIBE ANGRY BIRDS 🐦</h1>
+      <div class="loading-bar">
+        <div class="loading-progress" id="loading-progress"></div>
+      </div>
+      <p>Loading...</p>
+    </div>
+  </div>
+</body>
+</html>
+
